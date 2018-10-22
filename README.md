@@ -1,6 +1,8 @@
 # Peer
 Sublime plugin to create remote peer programming sessions. Connects to
-[Peer Server](https://github.com/jltorresm/peer-server) that manages the sessions.
+[Peer Server](https://github.com/jltorresm/peerserver) that manages the sessions.
+
+Important `TODO`: Fix configuration loading for the server url.
 
 ### Important! Read Before Continuing
 This is a basic proof of concept for a functional peer programming plugin. The current implementation has several
