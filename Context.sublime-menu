@@ -1,0 +1,12 @@
+[
+	{ "caption": "-" },
+	{
+		"caption": "Peer",
+		"children":
+		[
+			{ "command": "peer_consumer", "caption": "Join a Session" },
+			{ "command": "peer_sender", "caption": "Create a Session" },
+			{ "command": "peer_stop_sharing", "caption": "Stop Current Session" },
+		]
+	}
+]

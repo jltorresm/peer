@@ -1,0 +1,14 @@
+[
+	{
+		"caption": "Peer: Join a Session",
+		"command": "peer_consumer"
+	},
+	{
+		"caption": "Peer: Create a Session",
+		"command": "peer_sender"
+	},
+	{
+		"caption": "Peer: Stop Current Session",
+		"command": "peer_stop_sharing"
+	}
+]
