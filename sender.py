@@ -43,15 +43,22 @@ class PeerSenderCommand(sublime_plugin.TextCommand):
 		region = sublime.Region(0, self.view.size())
 		data = self.view.substr(region)
 
+		# Build a valid title to send
 		if self.view.file_name() == None:
 			title = self.view.name()
 		else:
 			title = os.path.basename(self.view.file_name())
 
+		# Gather all the selection to send
+		selections = []
+		for sel in self.view.sel():
+			selections.append({'a': sel.a, 'b': sel.b})
+
 		# Send it to the server
 		try:
 			self.server.syncContent(data, title)
 			self.server.syncViewport(*self.view.viewport_position())
+			self.server.syncSelection(selections)
 		except Exception as e:
 			self.showError(e)
 

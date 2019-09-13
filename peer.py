@@ -96,6 +96,31 @@ class Client:
 		except Exception as e:
 			utils.handleError(e, True)
 
+	def syncSelection(self, selections = None):
+		params = json.dumps(selections)
+		method = 'GET' if selections == None else 'PUT'
+
+		try:
+			self.conn.request(method, "/topic/" + self.topicId + '/selection', params, self.headers)
+			response = self.conn.getresponse()
+
+			encoding = response.headers.get_content_charset('utf-8')
+
+			if ((method == 'PUT' and response.status != 204) or (method == 'GET' and response.status != 200)):
+				utils.echo('Error ' + str(response.status) + ' (' + response.reason + '): ' + response.read().decode(encoding))
+				return
+
+			body = response.read().decode(encoding)
+
+			if (len(body) == 0):
+				return
+
+			body = json.loads(body)
+
+			return body
+		except Exception as e:
+			utils.handleError(e, True)
+
 	def closeTopic(self):
 		params = urllib.parse.urlencode({})
 

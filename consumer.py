@@ -35,8 +35,9 @@ class PeerConsumerCommand(sublime_plugin.WindowCommand):
 	def consume(self):
 		data = self.server.syncContent()
 		viewport = self.server.syncViewport()
+		selection = self.server.syncSelection()
 
-		self.session.run_command("peer_refresh_view", {"data": data, "viewport": viewport})
+		self.session.run_command("peer_refresh_view", {"data": data, "viewport": viewport, "selection": selection})
 
 		if (utils.fileExists(self.PID)):
 			Timer(self.TICK, self.consume).start()
